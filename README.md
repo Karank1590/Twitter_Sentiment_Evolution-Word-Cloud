@@ -8,7 +8,7 @@ Umang Patel - ujp2001@columbia.edu , Karan Kaul- kak2210@columbia.edu
 
 GitHub URL
 ----------
-https://github.com/UmangKaranAssignment3
+https://github.com/17patelumang/Twitter_Sentiment_Evolution-Word-Cloud
 
 
 Screencast URL
