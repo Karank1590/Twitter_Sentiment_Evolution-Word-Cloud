@@ -1,0 +1,54 @@
+<!-- Authors: Umang Patel - ujp2001 , Karan Kaul - kak2210 , This code is used to create word cloud using d3.js
+ -->
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <style>
+    body {
+        font-family:"Lucida Grande","Droid Sans",Arial,Helvetica,sans-serif;
+    }
+    .legend {
+        border: 1px solid #555555;
+        border-radius: 5px 5px 5px 5px;
+        font-size: 0.8em;
+        margin: 10px;
+        padding: 8px;
+    }
+    .bld {
+        font-weight: bold;
+    }
+</style>
+    </head>
+
+  <body>
+  <h1>Non Interactive Word Cloud</h1>
+  <h2>The Non Interactive word cloud for the given topic</h2>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="js/libs/d3.layout.cloud.js"></script>
+  <script src="js/libs/jquery-1.7.2.min.js"></script>
+    <script src="js/libs/script.js"></script>
+  
+  <select id="text-select">
+        <option value="coffee">Coffee</option>
+        <option value="chocolate">Chocolate</option>
+        <option value="internet">Internet</option>
+        <option value="justinbieber">JustinBieber</option>
+        <option value="pink">Pink</option>
+        <option value="youtube">Youtube</option>
+        <option value="disney">Disney</option>
+        <option value="madrid">Madrid</option>
+        <option value="christmas">Christmas</option>
+        <option value="android">Android</option>
+        <option value="twitter">Twitter</option>
+        <option value="ipad">iPad</option>
+        <option value="snapchat">Snapchat</option>
+        <option value="facebook">Facebook</option>
+        <option value="allah">Allah</option>
+        <option value="apple">Apple</option>
+      </select>
+      <a href="index.html" style="font-size: 25px;">Bubble Cloud</a>
+  </body>
+
+</html>

@@ -1,0 +1,144 @@
+<!-- Authors: Umang Patel - ujp2001 , Karan Kaul - kak2210 , This code is used to show how sentiment evolved over time  using d3.js
+ -->
+ 
+<!DOCTYPE html>
+<head><script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script></head>
+<meta charset="utf-8">
+
+<link href="css/nv.d3.css" rel="stylesheet" type="text/css">
+
+<style>
+
+body {
+  overflow-y:scroll;
+}
+
+text {
+  font: 12px sans-serif;
+}
+
+svg {
+  display: block;
+}
+
+#chart1 svg{
+  height: 500px;
+  min-width: 100px;
+  min-height: 100px;
+/*
+  margin: 10px;
+  Minimum height and width is a good idea to prevent negative SVG dimensions...
+  For example width should be =< margin.left + margin.right + 1,
+  of course 1 pixel for the entire chart would not be very useful, BUT should not have errors
+*/
+}
+
+</style>
+<body>
+<h1>Number of tweets vs Time(21st April 2014, 8pm to 1st May 2014 , 12 noon)</h1>
+  <div id="chart1">
+    <svg></svg>
+  </div>
+  <script src="js/libs/jquery-1.7.2.min.js"></script>
+<script src="js/libs/d3.v3.js"></script>
+<script src="js/libs/nv.d3.min.js"></script>
+<!-- including all the components so I don't have to minify every time I test in development -->
+<script src="js/libs/tooltip.js"></script>
+<script src="js/libs/utils.js"></script>
+<script src="js/libs/axis.js"></script>
+<script src="js/libs/discreteBar.js"></script>
+<script src="js/libs/discreteBarChart.js"></script>
+
+<script>
+function main(){
+
+	keyword = $("#text-select").val();
+	visualize(keyword);
+	
+	$("#text-select" ).change(function () {
+
+	keyword = $("#text-select").val();
+	visualize(keyword);
+	
+	});
+
+}
+function visualize(tsvname){
+	
+	nv.addGraph(function() {  
+		d3.tsv("data/SCORE_"+tsvname+".txt", function(error, data) {
+			var values = [];
+			minimum = 1000000000;
+			maximum = -1000000000;
+			data.forEach(function(d) {
+		        d.value = d.value*100;
+		        d.label = d.label;
+		        if(d.value < minimum){
+		        	minimum = d.value;
+		        }
+		        if(d.value > maximum){
+		        	maximum = d.value;
+		        } 
+		        values.push({
+		        	label: d.label,
+		        	value: d.value
+		        });
+		    });
+			var historicalBarChart = [];
+			historicalBarChart.push({
+				key: 'SomeKey',
+				values: values
+			});
+			//alert(historicalBarChart[0].key);/* + " " + historicalBarChart.values[0].label)*/
+			
+  		var chart = nv.models.discreteBarChart()
+    	  .x(function(d) { return d.label })
+      		.y(function(d) { return d.value })
+      		.staggerLabels(true)
+      		//.staggerLabels(historicalBarChart[0].values.length > 8)
+      		.tooltips(false)
+      		.showValues(true)
+      		.transitionDuration(250)
+      		.color(["#51A351", "#BD362F"])
+      		.forceY([-100,100])
+      		;
+  		
+  			
+  		d3.select('#chart1 svg')
+    		.datum(historicalBarChart)
+			.call(chart);
+  		d3.selectAll(".discreteBar")
+  			.style("fill", function(d, i){
+  				return d.value<0 ? "#BD362F": "#51A351";
+  			});
+
+	  	nv.utils.windowResize(chart.update);
+
+  		return chart;
+	});
+	});
+}
+$(document).ready(main);
+</script>
+
+ <select id="text-select">
+        <option value="coffee">Coffee</option>
+        <option value="chocolate">Chocolate</option>
+        <option value="internet">Internet</option>
+        <option value="justinbieber">JustinBieber</option>
+        <option value="pink">Pink</option>
+        <option value="youtube">Youtube</option>
+        <option value="disney">Disney</option>
+        <option value="madrid">Madrid</option>
+        <option value="christmas">Christmas</option>
+        <option value="android">Android</option>
+        <option value="twitter">Twitter</option>
+        <option value="ipad">iPad</option>
+        <option value="snapchat">Snapchat</option>
+        <option value="facebook">Facebook</option>
+        <option value="allah">Allah</option>
+        <option value="apple">Apple</option>
+      </select> 
+</br>
+<a href="index.html" style="font-size: 25px;">Bubble Cloud</a>
+      
