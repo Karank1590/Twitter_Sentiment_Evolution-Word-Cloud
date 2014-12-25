@@ -1,4 +1,4 @@
-Web Application to Display Trending Keywords and Sentiment Distribution Over Time About Popular Topics
+﻿Web Application to Display Trending Keywords and Sentiment Distribution Over Time About Popular Topics
 ======================================================================================================
 
 Authors
@@ -102,6 +102,7 @@ __Application__
 (1) The HTML/CSS/JavaScript files must be downloaded in the current structure, additionally, the data files as described above must be provided within a folder called 'Data'.
 
 (2) The application can be deployed on a server running Tomcat 6
+
 
 Bonus (Sentiment Distribution Over Time)
 --------------------------------
