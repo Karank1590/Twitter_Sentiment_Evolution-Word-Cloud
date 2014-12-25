@@ -93,7 +93,7 @@ Steps to run code
 
 __Python Script__
 
-(1) Provide the twitter API keys to the Python script
+(1) Provide the twitter API keys to the Python script.
 
 (2) run "python twitter_stream.py".
 
